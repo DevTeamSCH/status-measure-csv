@@ -15,11 +15,15 @@ with open(sys.argv[1]) as csv_file:
         value.append(int(row[2]))
 
 dates = date2num(timestamp)
+x_lable = []
+for date in dates:
+    time_in_minute = (date - dates[0]) * 24 * 60
+    x_lable.append(time_in_minute)
 fig, ax = plt.subplots()
-plt.xlabel('Time')
+plt.xlabel('Time (min)')
 plt.ylabel('Consumption')
-plt.title('Dryer')
-plt.plot(dates, value)
+plt.title('Machine ')
+plt.plot(x_lable, value)
 plt.gcf().autofmt_xdate()
 plt.grid(True)
 plt.show()
